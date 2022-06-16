@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
@@ -30,8 +29,9 @@ public class UrkNetTest {
         homePage.waitUntilLoaded();
 
         homePage.clickWriteLetter();
-        homePage.writeLetter("qweik1kfkck1n@mailinator.com","qwe","test body");
+        homePage.writeLetter("hw-10test@mailinator.com","qwe","test body");
         homePage.sendLetter();
+        Assert.assertEquals(homePage.getSentConfirmationText(),"Ваш лист надіслано");
 
 //        Assert.assertTrue(driver.getCurrentUrl().contains(homePage.getPageUrl()), "URL is not as expected");
 

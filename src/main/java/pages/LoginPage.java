@@ -2,17 +2,26 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import testdata.User;
 
 public class LoginPage extends BasePage {
 
-    private By loginField = By.name("login");
-    private By passwordField = By.cssSelector("[name='password']");
-    private By submitButton = By.cssSelector("[type='submit']");
+    @FindBy(name = "login")
+    private WebElement loginField;
+
+    @FindBy(css = "[name='password']")
+    private WebElement passwordField;
+
+    @FindBy(css = "[type='submit']")
+    private WebElement submitButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
         pageUrl = "https://mail.ukr.net/";
+        PageFactory.initElements(driver, this);
     }
 
     public void navigate() {
@@ -20,8 +29,8 @@ public class LoginPage extends BasePage {
     }
 
     public void login(User user) {
-        driver.findElement(loginField).sendKeys(user.getLogin());
-        driver.findElement(passwordField).sendKeys(user.getPassword());
-        driver.findElement(submitButton).click();
+        loginField.sendKeys(user.getLogin());
+        passwordField.sendKeys(user.getPassword());
+        submitButton.click();
     }
 }
