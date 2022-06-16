@@ -1,16 +1,16 @@
-package pages;
+package pages.ukrnet;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.BasePage;
 
 import java.time.Duration;
 
-public class HomePage extends BasePage {
+public class UkrnetHomePage extends BasePage {
 
     @FindBy(css = ".primary.compose")
     private WebElement writeLetterButton;
@@ -36,7 +36,7 @@ public class HomePage extends BasePage {
     public WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(4));
 
 
-    public HomePage(WebDriver driver) {
+    public UkrnetHomePage(WebDriver driver) {
         super(driver);
         pageUrl = "https://mail.ukr.net/desktop";
         PageFactory.initElements(driver, this);
