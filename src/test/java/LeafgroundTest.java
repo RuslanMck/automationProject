@@ -47,7 +47,7 @@ public class LeafgroundTest {
 
     @AfterTest
     public void finish(){
-        driver.close();
+//        driver.close();
     }
 
 }

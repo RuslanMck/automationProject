@@ -67,9 +67,7 @@ public class TestPage {
 
     public void selectCheckboxes(){
         for (WebElement element : selectAllCheckboxes){
-            if (!element.isSelected()){
                 element.click();
-            }
         }
     }
 
