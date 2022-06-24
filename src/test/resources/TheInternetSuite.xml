@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="The Internet">
+    <groups>
+        <run>
+            <exclude name="exclude-me"/>
+        </run>
+    </groups>
+        <test name="Regression">
+            <!--        To run all tests in one that in package-->
+            <!--        <packages>-->
+            <!--            <package name="ui.theinternet"/>-->
+            <!--        </packages>-->
+            <classes>
+                <class name="ui.theinternet.TheInternetLoginTest"/>
+            </classes>
+        </test>
+
+
+
+</suite>

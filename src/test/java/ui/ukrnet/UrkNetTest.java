@@ -1,4 +1,4 @@
-package ukrnet;
+package ui.ukrnet;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
@@ -12,11 +12,11 @@ import pages.mailinator.MailinatorMessagePage;
 import pages.ukrnet.UkrnetHomePage;
 import pages.ukrnet.UkrnetLoginPage;
 import testdata.User;
+import ui.BaseTest;
 
 
-public class UrkNetTest {
+public class UrkNetTest extends BaseTest {
 
-    private WebDriver driver;
     private String receiverEmailAddress = "hw-10test@mailinator.com";
     private String subject = "test subject";
     private String textBody = "test body";
@@ -25,11 +25,7 @@ public class UrkNetTest {
         driver.switchTo().newWindow(WindowType.TAB);
     }
 
-    @BeforeClass
-    public void setUp() {
-        System.setProperty("selenium.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-    }
+
 
     @Test
     public void sendEmailToMailinatorTest() {

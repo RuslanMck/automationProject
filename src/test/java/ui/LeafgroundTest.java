@@ -1,3 +1,5 @@
+package ui;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -5,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.TestPage;
 
 public class LeafgroundTest {
 
@@ -13,9 +16,7 @@ public class LeafgroundTest {
 
     @BeforeClass
     public void start() {
-        System.setProperty("selenium.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-        testPage = new TestPage(driver);
+
         testPage.start();
     }
 
