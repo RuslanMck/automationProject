@@ -5,7 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
+
+import java.time.Duration;
 
 
 public class MailinatorInboxPage extends BasePage {
@@ -20,24 +24,25 @@ public class MailinatorInboxPage extends BasePage {
     }
 
     public void openLastLetter() {
-        inboxMessageWaiter();
-        lastLetter.click();
+//        inboxMessageWaiter();
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(lastLetter)).click();
+//        lastLetter.click();
     }
 
-    public void inboxMessageWaiter() {
-        for (int i = 0; i < 8; i++) {
-            System.out.println(i);
-            try {
-                if (lastLetter.isDisplayed()) {
-                    return;
-                }
-            } catch (NoSuchElementException e) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        }
-    }
+//    public void inboxMessageWaiter() {
+//        for (int i = 0; i < 8; i++) {
+//            System.out.println(i);
+//            try {
+//                if (lastLetter.isDisplayed()) {
+//                    return;
+//                }
+//            } catch (NoSuchElementException e) {
+//                try {
+//                    Thread.sleep(500);
+//                } catch (InterruptedException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//            }
+//        }
+//    }
 }
