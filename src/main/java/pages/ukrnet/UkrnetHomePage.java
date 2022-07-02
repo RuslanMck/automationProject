@@ -33,7 +33,7 @@ public class UkrnetHomePage extends BasePage {
     @FindBy(className = "sendmsg__ads-ready")
     private WebElement confirmNotification;
 
-    public WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(4));
+
 
 
     public UkrnetHomePage(WebDriver driver) {
