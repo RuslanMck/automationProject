@@ -1,0 +1,10 @@
+<suite name="Homework 18 suite">
+    <test name="Leaf Ground Test" >
+        <classes>
+            <class name="leafground.LGDisappearTest" />
+            <class name="leafground.LGTextChangeTest" />
+            <class name="leafground.LGAppearTest" />
+        </classes>
+    </test>
+
+</suite>
