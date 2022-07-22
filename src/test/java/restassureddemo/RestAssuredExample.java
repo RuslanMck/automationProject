@@ -20,36 +20,45 @@ public class RestAssuredExample {
     private String petId;
     private String petOrderId;
 
+    private PetDto petDto;
+
     @BeforeClass
     private void setup(){
         requestSpecification = new RequestSpecBuilder()
                 .setBaseUri(BASE_URL)
                 .addHeader("Content-Type", "application/json")
                 .build();
-    }
 
-    @Test
-    @SneakyThrows
-    public void createPet() {
-
-        PetDto requestPet = PetDto
+        petDto = PetDto
                 .builder()
                 .status("available")
                 .name("Barsik")
                 .build();
+    }
 
-        petId = RestAssured
-                .given()
-                .spec(requestSpecification)
-                .body(new ObjectMapper().writeValueAsString(requestPet))
-                .when()
-                .post("/pet")
-                .then() //проверки
-                .statusCode(200)
-                .extract()
-                .body()
-                .jsonPath()
-                .getString("id");
+
+    @SneakyThrows
+    private String createPet(){
+       return  RestAssured
+               .given()
+               .spec(requestSpecification)
+               .body(new ObjectMapper().writeValueAsString(petDto))
+               .when()
+               .post("/pet")
+               .then() //проверки
+               .statusCode(200)
+               .extract()
+               .body()
+               .jsonPath()
+               .getString("id");
+    }
+
+
+    @Test
+    @SneakyThrows
+    public void getCreatedPet() {
+
+        petId = createPet();
 
         JsonPath jsonResponsePet = RestAssured
                 .given()
@@ -64,13 +73,15 @@ public class RestAssuredExample {
 
         PetDto responsePet = new ObjectMapper().readValue(jsonResponsePet.prettify(), PetDto.class);
 
-        Assert.assertEquals(requestPet, responsePet);
+        Assert.assertEquals(petDto, responsePet);
 
     }
 
     @Test
     @SneakyThrows
     public void placeOrder(){
+
+        petId = createPet();
 
         PetOrderDto requestPetOrder = PetOrderDto.builder().petId(Long.valueOf(petId)).quantity(1).build();
 
